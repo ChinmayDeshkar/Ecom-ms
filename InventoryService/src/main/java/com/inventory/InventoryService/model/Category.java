@@ -23,8 +23,7 @@ public class Category {
     Long id;
     String name;
     String description;
-//    @CreatedDate
-//    @Column(nullable = false, updatable = false)
+    
     @Column(name = "dte_created", nullable = false, updatable = false, insertable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     LocalDateTime dteCreated;
