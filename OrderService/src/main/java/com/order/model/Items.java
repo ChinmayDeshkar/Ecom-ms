@@ -13,7 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Items {
     String itemId;
-    String description;
-    Long unitPrice;
     Long quantity;
 }
