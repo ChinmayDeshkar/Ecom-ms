@@ -1,6 +1,6 @@
 package com.order.config;
 
-import com.order.model.Topics;
+import com.order.model.AppConstants;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ public class KafkaConfig {
 
     @Bean
     public NewTopic topic(){
-        return TopicBuilder.name(Topics.orderPlaced)
+        return TopicBuilder.name(AppConstants.orderPlacedTopic)
                 .build();
     }
 

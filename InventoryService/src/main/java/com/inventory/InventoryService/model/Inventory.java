@@ -13,11 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    String id;
     String name;
     String description;
-    int stock;
+    Long stock;
     Long unitPrice;
     Long categoryId;
 

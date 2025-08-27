@@ -9,7 +9,9 @@ public interface InventoryService {
 
     List<Inventory> findAll();
     List<Inventory> findByCategory(Long category);
-    Inventory findById(Long id);
+    Inventory findById(String id);
     Inventory addNewProduct(Inventory inventory);
-    Inventory updateById(Long id, Inventory inventory);
+    Inventory updateById(String id, Inventory inventory);
+
+    void deleteAll();
 }

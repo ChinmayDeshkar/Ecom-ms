@@ -3,6 +3,7 @@ package com.inventory.InventoryService.controller;
 import com.inventory.InventoryService.model.Category;
 import com.inventory.InventoryService.model.Inventory;
 import com.inventory.InventoryService.service.InventoryService;
+import jakarta.ws.rs.DELETE;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class InventoryController {
     }
 
     @GetMapping("id={id}")
-    public Inventory getById(@PathVariable Long id){
+    public Inventory getById(@PathVariable String id){
         return inventoryService.findById(id);
     }
 
@@ -50,7 +51,12 @@ public class InventoryController {
     }
 
     @PutMapping("/update")
-    public Inventory updateById(@RequestParam("id") Long id, @RequestBody Inventory inventory){
+    public Inventory updateById(@RequestParam("id") String id, @RequestBody Inventory inventory){
         return inventoryService.updateById(id, inventory);
+    }
+
+    @DeleteMapping("/delete")
+    public void delete(){
+        inventoryService.deleteAll();
     }
 }

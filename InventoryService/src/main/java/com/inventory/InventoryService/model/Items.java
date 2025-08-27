@@ -1,4 +1,4 @@
-package com.notification.NotificationService.dto;
+package com.inventory.InventoryService.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Items {
-    int itemId;
+    String itemId;
     String description;
     Long unitPrice;
     Long quantity;

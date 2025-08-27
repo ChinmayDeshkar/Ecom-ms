@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InventoryRepo extends JpaRepository<Inventory, Long> {
+public interface InventoryRepo extends JpaRepository<Inventory, String> {
     List<Inventory> findByCategoryId(Long category);
 
 }

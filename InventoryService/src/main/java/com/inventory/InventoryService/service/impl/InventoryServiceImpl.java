@@ -33,7 +33,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Inventory findById(Long id) {
+    public Inventory findById(String id) {
         return inventoryRepo.findById(id).orElseThrow(() -> new RuntimeException("Product Not Found"));
     }
 
@@ -41,17 +41,24 @@ public class InventoryServiceImpl implements InventoryService {
     public Inventory addNewProduct(Inventory inventory) {
         Category category = categoryRepo.findById(inventory.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category does not exists!!"));
-
+        String customId = "PRD" + (this.findAll().size() + 1);
+        inventory.setId(customId);
+        log.info(inventory.getId());
         return inventoryRepo.save(inventory);
     }
 
     @Override
-    public Inventory updateById(Long id, Inventory inventory) {
+    public Inventory updateById(String id, Inventory inventory) {
         Inventory inventory1 = findById(id);
         if (inventory1 == null) {
             log.error("Product does not exists with id: {}", id);
             throw new RuntimeException("Product not found");
         }
         return inventoryRepo.save(inventory);
+    }
+
+    @Override
+    public void deleteAll(){
+        inventoryRepo.deleteAll();
     }
 }
