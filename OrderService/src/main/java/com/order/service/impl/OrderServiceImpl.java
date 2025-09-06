@@ -54,20 +54,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order addOrder(Order order) {
+        log.info("Order: ---" + order);
         Long total = 0L;
         Customer customer = customerClient.getCustomerDetails(order.getCustomerId());
         if(customer == null) throw new RuntimeException("Customer Id is invalid!!");
-        for (int i = 0; i < order.getItems().size(); i++) {
-            Inventory inventory = inventoryClient.getById(order.getItems().get(i).getItemId());
-            total += order.getItems().get(i).getQuantity() * inventory.getUnitPrice();
-            System.out.println(total);
+        for (Items item : order.getItems()) {
+            Inventory inventory = inventoryClient.getById(item.getItemId());
+            if(inventory.getStock() >= 0){
+                throw new RuntimeException(inventory.getName() + " is out of stock!!");
+            }
         }
-        if(order.getTaxRate() > 0) total += total * order.getTaxRate()/100;
-
-        if(order.getDiscount() > 0) total -= order.getDiscount();
-
-
-        order.setTotal(total);
         int size = getAllOrders().size();
         order.setOrderId("ORD" + (size + 1));
         boolean isMessageSent = kafkaServiceImpl.sendNewOrder(order);

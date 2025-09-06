@@ -4,6 +4,7 @@ import com.order.model.Order;
 import com.order.model.OrderResponse;
 import com.order.model.Items;
 import com.order.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/order")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
     private final OrderService orderService;
@@ -29,6 +32,8 @@ public class OrderController {
 
     @PostMapping("/add")
     public ResponseEntity<OrderResponse> addOrder(@RequestBody Order order){
+        log.info(order.toString());
+        log.info("--------------------- Here we are ------------------------");
         try{
             Order createdOrder = orderService.addOrder(order);
             if(order == null || order.getOrderId() == null)
@@ -50,10 +55,11 @@ public class OrderController {
 
     @PutMapping("/status-update/orderid={OrderId}&status={newStatus}")
     public ResponseEntity<OrderResponse> updateOrderStatus(@PathVariable String OrderId, @PathVariable String newStatus){
+        log.info("--------------------- Here we are updateOrderStatus ------------------------");
         try{
             Order order = orderService.updateStatusById(OrderId, newStatus);
-            OrderResponse reponse = new OrderResponse(order.getOrderId(), "Order Status has been updated!!");
-            return ResponseEntity.status(HttpStatus.OK).body(reponse);
+            OrderResponse response = new OrderResponse(order.getOrderId(), "Order Status has been updated!!");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -66,6 +72,7 @@ public class OrderController {
 
     @PutMapping("/addItem/orderId={id}")
     public ResponseEntity<OrderResponse> addItemInList(@PathVariable String id, @RequestBody Items item){
+        log.info("--------------------- Here we are addItemInList ------------------------");
         try{
             Order order = orderService.addItemsInOrder(id, item);
             OrderResponse response = new OrderResponse(order.getOrderId(), "Item added to order!!");
