@@ -61,4 +61,20 @@ public class InventoryServiceImpl implements InventoryService {
     public void deleteAll(){
         inventoryRepo.deleteAll();
     }
+
+    @Override
+    public String getNameById(String id) {
+        Inventory inventory = inventoryRepo.findById(id).orElseThrow(() -> new RuntimeException("Product not found!!"));
+        return inventory.getName();
+    }
+
+    @Override
+    public Long getUnitPriceById(String id) {
+        Inventory inventory = inventoryRepo.findById(id).orElseThrow(() -> new RuntimeException("Product not found!!"));
+        return inventory.getUnitPrice();
+    }
+
+    public List<Category> getAllCategory(){
+        return categoryRepo.findAll();
+    }
 }

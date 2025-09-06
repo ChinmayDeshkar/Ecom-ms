@@ -12,6 +12,8 @@ public interface InventoryService {
     Inventory findById(String id);
     Inventory addNewProduct(Inventory inventory);
     Inventory updateById(String id, Inventory inventory);
-
+    public List<Category> getAllCategory();
     void deleteAll();
+    String getNameById(String id);
+    Long getUnitPriceById(String id);
 }

@@ -2,6 +2,7 @@ package com.inventory.InventoryService.controller;
 
 import com.inventory.InventoryService.model.Category;
 import com.inventory.InventoryService.model.Inventory;
+import com.inventory.InventoryService.repo.CategoryRepo;
 import com.inventory.InventoryService.service.InventoryService;
 import jakarta.ws.rs.DELETE;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/inventory")
+@CrossOrigin(origins = "http://localhost:4200")
 public class InventoryController {
 
     private final InventoryService inventoryService;
@@ -21,16 +23,25 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public List<Inventory> getAll(){
         return inventoryService.findAll();
     }
 
-    @GetMapping("id={id}")
+    @GetMapping("/id={id}")
     public Inventory getById(@PathVariable String id){
         return inventoryService.findById(id);
     }
 
+    @GetMapping("/namebyid")
+    public String getNameById(@RequestParam String id){
+        return inventoryService.getNameById(id);
+    }
+
+    @GetMapping("/unitPriceById")
+    public Long getUnitPriceById(@RequestParam String id){
+        return inventoryService.getUnitPriceById(id);
+    }
     @GetMapping("/category={category}")
     public List<Inventory> getByCategory(@PathVariable Long category){
         return inventoryService.findByCategory(category);
@@ -53,6 +64,11 @@ public class InventoryController {
     @PutMapping("/update")
     public Inventory updateById(@RequestParam("id") String id, @RequestBody Inventory inventory){
         return inventoryService.updateById(id, inventory);
+    }
+
+    @GetMapping("/category/all")
+    public List<Category> getAllCategory(){
+        return inventoryService.getAllCategory();
     }
 
     @DeleteMapping("/delete")
