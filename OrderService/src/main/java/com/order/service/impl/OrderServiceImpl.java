@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
         if(customer == null) throw new RuntimeException("Customer Id is invalid!!");
         for (Items item : order.getItems()) {
             Inventory inventory = inventoryClient.getById(item.getItemId());
-            if(inventory.getStock() >= 0){
+            if(inventory.getStock() <= 0){
                 throw new RuntimeException(inventory.getName() + " is out of stock!!");
             }
         }
