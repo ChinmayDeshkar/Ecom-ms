@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="33f3a344-a32b-4a9e-8fdb-d644a2903a58" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/src/main/java/com/cart/CartServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartService/src/test/java/com/cart/CartServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaServer/dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Monitoring/prometheus.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NotificationService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CartService/src/main/java/com/cart/service/InventoryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/CartService/src/main/java/com/cart/service/InventoryClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerService/src/main/java/com/customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerService/src/main/java/com/customer/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EurekaServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EurekaServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/model/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/service/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/src/main/java/com/inventory/InventoryService/service/impl/InventoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/java/com/notification/NotificationService/service/CustomerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/java/com/notification/NotificationService/service/CustomerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/java/com/notification/NotificationService/service/InventoryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/java/com/notification/NotificationService/service/InventoryClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/CustomerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/CustomerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/InventoryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/InventoryClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/order/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ChinmayDeshkar"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ChinmayDeshkar/Ecom-ms.git",
+    "accountId": "3a57083c-6101-4832-bb4c-2197d48e50c2"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="31xYAdP6sZ1mTPdP62O76l32e0Q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Image-upload",
+    "last_opened_file_path": "C:/Users/deshk/OneDrive/Desktop/order-management/backend",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\deshk\OneDrive\Desktop\order-management\backend\EurekaServer" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33f3a344-a32b-4a9e-8fdb-d644a2903a58" name="Changes" comment="" />
+      <created>1756467048984</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756467048984</updated>
+    </task>
+    <servers />
+  </component>
+</project>
