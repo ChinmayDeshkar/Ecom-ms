@@ -1,0 +1,12 @@
+com\inventory\InventoryService\service\impl\InventoryServiceImpl.class
+com\inventory\InventoryService\model\Items.class
+com\inventory\InventoryService\config\KafkaConsumerConfig.class
+com\inventory\InventoryService\model\Category.class
+com\inventory\InventoryService\repo\InventoryRepo.class
+com\inventory\InventoryService\repo\CategoryRepo.class
+com\inventory\InventoryService\controller\InventoryController.class
+com\inventory\InventoryService\InventoryServiceApplication.class
+com\inventory\InventoryService\service\InventoryService.class
+com\inventory\InventoryService\model\Inventory.class
+com\inventory\InventoryService\model\AppConstants.class
+com\inventory\InventoryService\model\Order.class

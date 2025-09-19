@@ -3,6 +3,7 @@ package com.customer.controller;
 import com.customer.model.Customer;
 import com.customer.model.CustomerResponse;
 import com.customer.service.CustomerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -44,6 +47,7 @@ public class CustomerController {
 
     @GetMapping("/find/id={customerId}")
     public Customer findById(@PathVariable String customerId){
+        log.info("CustomerId: " + customerId);
         return customerService.getById(customerId);
     }
 
@@ -68,4 +72,15 @@ public class CustomerController {
             throw new RuntimeException("Something went wrong while updating role: " +e);
         }
     }
+
+    @GetMapping("/exists/{customerId}")
+    public ResponseEntity<Boolean> checkCustomerExists(@PathVariable String customerId) {
+        Customer customer = customerService.getById(customerId);
+        if (customer != null) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.ok(false);
+        }
+    }
+
 }

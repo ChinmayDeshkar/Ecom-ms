@@ -21,11 +21,10 @@ public class Order {
     String customerId;
     @ElementCollection
     List<Items> items;
-    @Transient
-    Long taxRate;
+    Long taxAmount;
     @Transient
     Long discount;
-    Long total;
+    Long totalPayableAmount;
     String status;
     @Column(nullable = false, updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")

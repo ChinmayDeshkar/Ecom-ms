@@ -1,0 +1,143 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: bills
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend-network
+
+  zookeeper:
+    image: bitnami/zookeeper:3.9
+    container_name: zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - "2182:2181"
+    networks:
+      - backend-network
+
+  kafka:
+    image: bitnami/kafka:3.6
+    container_name: kafka
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    ports:
+      - "29092:9092"
+    depends_on:
+      - zookeeper
+    networks:
+      - backend-network
+
+  service-registry:
+    build: ./EurekaServer
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    depends_on:
+      - mysql
+    networks:
+      - backend-network
+
+  customer-service:
+    build: ./customerService
+    container_name: customer-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - service-registry
+    networks:
+      - backend-network
+
+  order-service:
+    build: ./orderService
+    container_name: order-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+      - kafka
+      - service-registry
+    networks:
+      - backend-network
+
+  cart-service:
+    build: ./cartService
+    container_name: cart-service
+    ports:
+      - "8086:8086"
+    depends_on:
+      - mysql
+      - service-registry
+    networks:
+      - backend-network
+
+  inventory-service:
+    build: ./inventoryService
+    container_name: inventory-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - mysql
+      - kafka
+      - service-registry
+    networks:
+      - backend-network
+
+  notification-service:
+    build: ./notificationService
+    container_name: notification-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - kafka
+      - service-registry
+    networks:
+      - backend-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - customer-service
+      - order-service
+      - cart-service
+      - inventory-service
+      - notification-service
+      - service-registry
+    networks:
+      - backend-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    networks:
+      - backend-network
+
+volumes:
+  mysql_data:
+
+networks:
+  backend-network:
+    driver: bridge
