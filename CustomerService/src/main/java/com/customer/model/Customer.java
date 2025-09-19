@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Setter
@@ -23,12 +22,12 @@ public class Customer {
     String role;
     @Column(nullable = false, updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    LocalDateTime dte_Created;
+    LocalDateTime dte_created;
 
     // Lifecycle hooks
     @PrePersist
     protected void onCreate() {
-        this.dte_Created = LocalDateTime.now();
+        this.dte_created = LocalDateTime.now();
     }
 
 }

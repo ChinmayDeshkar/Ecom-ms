@@ -1,10 +1,12 @@
 package com.order.service.impl;
 
 import com.order.model.Customer;
+import com.order.model.Inventory;
 import com.order.model.Order;
 import com.order.model.Items;
 import com.order.repo.OrderRepo;
 import com.order.service.CustomerClient;
+import com.order.service.InventoryClient;
 import com.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,11 +20,13 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepo orderRepo;
     private final CustomerClient customerClient;
     private final KafkaServiceImpl kafkaServiceImpl;
+    private final InventoryClient inventoryClient;
 
-    public OrderServiceImpl(CustomerClient customerClient, OrderRepo orderRepo, KafkaServiceImpl kafkaServiceImpl) {
+    public OrderServiceImpl(CustomerClient customerClient, OrderRepo orderRepo, KafkaServiceImpl kafkaServiceImpl, InventoryClient inventoryClient) {
         this.customerClient = customerClient;
         this.orderRepo = orderRepo;
         this.kafkaServiceImpl = kafkaServiceImpl;
+        this.inventoryClient = inventoryClient;
     }
 
     @Override
@@ -50,19 +54,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order addOrder(Order order) {
+        log.info("Order: ---" + order);
         Long total = 0L;
         Customer customer = customerClient.getCustomerDetails(order.getCustomerId());
         if(customer == null) throw new RuntimeException("Customer Id is invalid!!");
-        for (int i = 0; i < order.getItems().size(); i++) {
-            total += order.getItems().get(i).getQuantity() * order.getItems().get(i).getUnitPrice();
-            System.out.println(total);
+        for (Items item : order.getItems()) {
+            Inventory inventory = inventoryClient.getById(item.getItemId());
+            if(inventory.getStock() <= 0){
+                throw new RuntimeException(inventory.getName() + " is out of stock!!");
+            }
         }
-        if(order.getTaxRate() > 0) total += total * order.getTaxRate()/100;
-
-        if(order.getDiscount() > 0) total -= order.getDiscount();
-
-
-        order.setTotal(total);
         int size = getAllOrders().size();
         order.setOrderId("ORD" + (size + 1));
         boolean isMessageSent = kafkaServiceImpl.sendNewOrder(order);

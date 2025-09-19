@@ -1,5 +1,6 @@
 package com.notification.NotificationService.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,11 +16,13 @@ public class Order {
     String orderId;
     String customerId;
     List<Items> items;
-    Long taxRate;
+    Long taxAmount;
     Long discount;
-    Long total;
+    Long totalPayableAmount;
     String status;
     LocalDateTime dteCreated;
     LocalDateTime dteUpdated;
+
+
 
 }
